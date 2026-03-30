@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>shoes_inventory</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="top-header">
+        <div class="brand">
+          <div class="logos">
+            <img class="logo" src="/items/logo.png" alt="shoe_logo" />
+          </div>
+          <div>
+            <h2>ShoeStock Pro</h2>
+            <p>Shoe inventory Management</p>
+          </div>
+        </div>
+
+        <button class="add-btn">+ Add Product</button>
+      </header>
+      <!-- form -->
+      <div class="product-form-container">
+        <form action="" id="product-form">
+          <input type="text" id="input-name" placeholder="name of product">
+          <input type="text" id="input-category" placeholder="category">
+          <input type="text" id="input-sku" placeholder="put unique number">
+          <input type="number" id="input-quantity" placeholder="quantity">
+          <input type="number" id="input-price" placeholder="price">
+
+          <button type="button" id="cancel-button">Cancel</button>
+          <button type="submit">Add Product</button>
+        </form>
+      </div>
+
+      <!-- stats cards -->
+
+      <section class="stats-section">
+        <div class="stat-card purple">
+          <div class="top">
+            <div class="icon">📦</div>
+            <span class="badge">↑ 12%</span>
+          </div>
+          <p>Total Products</p>
+          <h2>6</h2>
+        </div>
+
+        <div class="stat-card green">
+          <div class="top">
+            <div class="icon">💲</div>
+            <span class="badge">↑ 8%</span>
+          </div>
+          <p>Inventory Value</p>
+          <h2>$17,388.78</h2>
+        </div>
+
+        <div class="stat-card blue">
+          <div class="top">
+            <div class="icon">📈</div>
+            <span class="badge">↑ 5%</span>
+          </div>
+          <p>In Stock</p>
+          <h2>3</h2>
+        </div>
+
+        <div class="stat-card orange">
+          <div class="top">
+            <div class="icon">⚠️</div>
+            <span class="badge down">↓ 3%</span>
+          </div>
+          <p>Low Stock Alert</p>
+          <h2>3</h2>
+        </div>
+      </section>
+
+      <!-- Search Section -->
+
+      <section class="search-section">
+        <div class="search-wrapper">
+          <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input
+              type="text"
+              placeholder="Search products by name, category, or SKU..."
+            />
+          </div>
+
+          <button class="view-btn">☷</button>
+          <button class="view-btn">📊</button>
+        </div>
+
+        <div class="search-footer">
+          <p>Showing <strong>6</strong> of <strong>6</strong> products</p>
+        </div>
+      </section>
+
+      <!-- product card -->
+      <div class="product-card">
+        <div class="product-image-wrap">
+          <span class="stock-badge">In Stock</span>
+          <img
+            src="your-image.jpg"
+            alt="Air Max Running Shoes"
+            class="product-image"
+          />
+        </div>
+
+        <div class="product-content">
+          <p class="product-category">◫ RUNNING</p>
+          <h3 class="product-title">Air Max Running Shoes</h3>
+          <p class="product-sku">SKU: RUN-2024-001</p>
+
+          <div class="product-divider"></div>
+
+          <div class="product-meta">
+            <div>
+              <p class="meta-label">Price</p>
+              <h4 class="meta-value">$149.99</h4>
+            </div>
+
+            <div class="meta-right">
+              <p class="meta-label">Quantity</p>
+              <h4 class="meta-value qty">45</h4>
+            </div>
+          </div>
+
+          <div class="product-divider"></div>
+
+          <div class="product-total">
+            <p class="meta-label">Total Value</p>
+            <h4 class="meta-value">$6749.55</h4>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Cards -->
+
+      <!-- <section class="product-sections">
+        <div class="product-card">
+          <div class="product-image">
+            <div>
+              <button>Edit</button>
+              <button>Delete</button>
+              <span class="badge in-stock-badge">In Stock</span>
+            </div>
+
+            <img
+              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
+              alt="Running shoes"
+            />
+          </div>
+
+          <div class="product-info">
+            <p class="category">RUNNING</p>
+            <h3>Air Max Running Shoes</h3>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <div class="buttons">
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </div>
+            <span class="badge low-stock-badge">Low Stock</span>
+            <img
+              src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?auto=format&fit=crop&w=800&q=80"
+              alt="Casual shoes"
+            />
+          </div>
+
+          <div class="product-info">
+            <p class="category">CASUAL</p>
+            <h3>Classic White Sneakers</h3>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <div class="buttons">
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </div>
+            <span class="badge low-stock-badge">Low Stock</span>
+            <img
+              src="https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=80"
+              alt="Sports shoes"
+            />
+          </div>
+
+          <div class="product-info">
+            <p class="category">SPORTS</p>
+            <h3>Pro Basketball Shoes</h3>
+          </div>
+        </div>
+      </section> -->
+
+      <script src="script.js"></script>
+    </main>
+  </body>
+</html>
