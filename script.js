@@ -5,6 +5,7 @@ const inputcategory = document.getElementById("input-category");
 const inputsku = document.getElementById("input-sku");
 const inputquantity = document.getElementById("input-quantity");
 const inputprice = document.getElementById("input-price");
+const total_products = document.getElementById("total");
 
 let products = [];
 
