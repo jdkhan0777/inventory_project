@@ -10,7 +10,7 @@
     <main class="app">
       <header class="top-header">
         <div class="brand">
-          <div class="logos">
+          <div class="logo">
             <img class="logo" src="/items/logo.png" alt="shoe_logo" />
           </div>
           <div>
@@ -19,21 +19,54 @@
           </div>
         </div>
 
-        <button class="add-btn">+ Add Product</button>
+        <button id="add-btns" class="add-btn">+ Add Product</button>
       </header>
       <!-- form -->
-      <div class="product-form-container">
+      <section class="section-form hidden" id="form-card">
         <form action="" id="product-form">
-          <input type="text" id="input-name" placeholder="name of product" />
-          <input type="text" id="input-category" placeholder="category" />
-          <input type="text" id="input-sku" placeholder="put unique number" />
-          <input type="number" id="input-quantity" placeholder="quantity" />
-          <input type="number" id="input-price" placeholder="price" />
+          <div class="form-header">
+            <div class="form-header-left">
+              <img src="/items/box.png" alt="logo" class="logo-form" />
 
-          <button type="button" id="cancel-button">Cancel</button>
-          <button type="submit">Add Product</button>
+              <div class="form-text">
+                <h2>Add New Shoe</h2>
+                <p>Enter shoe information</p>
+              </div>
+            </div>
+
+            <!-- <button id="close-btn" class="close-btns">X</button> -->
+          </div>
+          <div class="input-fileds">
+            <div class="input-name">
+              <h3>Shoe Name'</h3>
+              <input
+                type="text"
+                id="input-name"
+                placeholder="e.g., Running casual "
+              />
+            </div>
+            <div class="input-category-sku">
+              <h3>Category & SKU'</h3>
+              <input type="text" id="input-category" placeholder="Category" />
+              <input
+                type="text"
+                id="input-sku"
+                placeholder="SKU (e.g., RUN-2024-001) "
+              />
+            </div>
+            <div class="input-category-quantity-price">
+              <h3>Price/Quantity'</h3>
+              <input type="number" id="input-quantity" placeholder="quantity" />
+              <input type="number" id="input-price" placeholder="price" />
+            </div>
+            <div ></div>
+          </div>
+          <div class="form-button">
+            <button type="button" id="cancel-button">Cancel</button>
+            <button type="submit">Add Product</button>
+          </div>
         </form>
-      </div>
+      </section>
 
       <!-- stats cards -->
 
@@ -43,8 +76,8 @@
             <div class="icon">📦</div>
             <span class="badge">↑ 12%</span>
           </div>
-          <p id="total">Total Products</p>
-          <h2>6</h2>
+          <p>Total Products</p>
+          <h2 id="total">0</h2>
         </div>
 
         <div class="stat-card green">
@@ -53,7 +86,7 @@
             <span class="badge">↑ 8%</span>
           </div>
           <p>Inventory Value</p>
-          <h2>$17,388.78</h2>
+          <h2 id="price">£0.00</h2>
         </div>
 
         <div class="stat-card blue">
@@ -62,7 +95,7 @@
             <span class="badge">↑ 5%</span>
           </div>
           <p>In Stock</p>
-          <h2>3</h2>
+          <h2 id="instock">0</h2>
         </div>
 
         <div class="stat-card orange">
@@ -71,14 +104,15 @@
             <span class="badge down">↓ 3%</span>
           </div>
           <p>Low Stock Alert</p>
-          <h2>3</h2>
+          <h2 id="lowstock">0</h2>
         </div>
       </section>
 
       <!-- Search Section -->
 
-      <section class="search-section">
-        <div class="search-wrapper">
+      <section class="section">
+        <div class="search-section">
+          <div class="search-wrapper">
           <div class="search-bar">
             <span class="search-icon">🔍</span>
             <input
@@ -94,108 +128,41 @@
         <div class="search-footer">
           <p>Showing <strong>6</strong> of <strong>6</strong> products</p>
         </div>
+        </div>
+        
       </section>
 
       <!-- product card -->
-      <div class="product-card">
-        <div class="product-image-wrap">
-          <span class="stock-badge">In Stock</span>
-          <img
-            src="your-image.jpg"
-            alt="Air Max Running Shoes"
-            class="product-image"
-          />
-        </div>
 
-        <div class="product-content">
-          <p class="product-category">◫ RUNNING</p>
-          <h3 class="product-title">Air Max Running Shoes</h3>
-          <p class="product-sku">SKU: RUN-2024-001</p>
+      <section class="product-section">
+  <div class="product-card">
+    <div class="product-image">
+      <img src="/items/nature.jpg" alt="Forest and trees" />
+    </div>
 
-          <div class="product-divider"></div>
+    <div class="product-content">
+      <h3 class="product-title">Forest Explorer</h3>
+      <p class="product-sku">SKU: FOR-2024-001</p>
+    </div>
 
-          <div class="product-meta">
-            <div>
-              <p class="meta-label">Price</p>
-              <h4 class="meta-value">$149.99</h4>
-            </div>
-
-            <div class="meta-right">
-              <p class="meta-label">Quantity</p>
-              <h4 class="meta-value qty">45</h4>
-            </div>
-          </div>
-
-          <div class="product-divider"></div>
-
-          <div class="product-total">
-            <p class="meta-label">Total Value</p>
-            <h4 class="meta-value">$6749.55</h4>
-          </div>
-        </div>
+    <div class="product-stats">
+      <div class="product-stats-left">
+        <h3>Price</h3>
+        <p>£99.99</p>
       </div>
 
-      <!-- Product Cards -->
+      <div class="product-stats-right">
+        <h3>Quantity</h3>
+        <p>25</p>
+      </div>
+    </div>
 
-      <!-- <section class="product-sections">
-        <div class="product-card">
-          <div class="product-image">
-            <div>
-              <button>Edit</button>
-              <button>Delete</button>
-              <span class="badge in-stock-badge">In Stock</span>
-            </div>
-
-            <img
-              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
-              alt="Running shoes"
-            />
-          </div>
-
-          <div class="product-info">
-            <p class="category">RUNNING</p>
-            <h3>Air Max Running Shoes</h3>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-image">
-            <div class="buttons">
-              <button class="edit">Edit</button>
-              <button class="delete">Delete</button>
-            </div>
-            <span class="badge low-stock-badge">Low Stock</span>
-            <img
-              src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?auto=format&fit=crop&w=800&q=80"
-              alt="Casual shoes"
-            />
-          </div>
-
-          <div class="product-info">
-            <p class="category">CASUAL</p>
-            <h3>Classic White Sneakers</h3>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-image">
-            <div class="buttons">
-              <button class="edit">Edit</button>
-              <button class="delete">Delete</button>
-            </div>
-            <span class="badge low-stock-badge">Low Stock</span>
-            <img
-              src="https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=80"
-              alt="Sports shoes"
-            />
-          </div>
-
-          <div class="product-info">
-            <p class="category">SPORTS</p>
-            <h3>Pro Basketball Shoes</h3>
-          </div>
-        </div>
-      </section> -->
+    <div class="product-total">
+      <h2>Total Value</h2>
+      <p>£2499.75</p>
+    </div>
+  </div>
+</section>
 
       <script src="script.js"></script>
     </main>
