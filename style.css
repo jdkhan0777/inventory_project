@@ -282,6 +282,10 @@ img {
   width: auto;
 }
 
+.input-fields h3 {
+  padding: 12px 16px;
+}
+
 .form-text h2 {
   font-size: 28px;
   font-weight: 700;
@@ -302,11 +306,12 @@ img {
   cursor: pointer;
 }
 
-.input-fields {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  padding: var(--space-5);
+.input-fields input {
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  gap: 12px;
 }
 
 .input-fields input {
@@ -321,7 +326,6 @@ img {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  
 }
 
 .form-button {
@@ -346,16 +350,57 @@ img {
   display: none;
 }
 
+
+
 /* product card */
+.product-section {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
 
 .product-card {
   width: 100%;
+  width: 300px;
   max-width: 460px;
   background: #ffffff;
   border: 1px solid #e8e8ee;
   border-radius: var(--radius-2xl);
   overflow: hidden;
   box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+  position: relative;
+}
+.buttons-edit-delete {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  gap: var(--space-2);
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+.product-card:hover .buttons-edit-delete {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.delete-btn {
+  cursor: pointer;
+  /* background: none; */
+  /* border: none; *  /
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.edit-btn {
+  /* background: none; */
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .product-image {
@@ -520,4 +565,45 @@ img {
   .logo-form {
     height: 32px;
   }
+}
+
+/* image preview */
+.form-image {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 12px;
+  /* border: 1px solid #d1d5db; */
+  border-radius: var(--radius-sm);
+  font-size: 16px;  
+  gap: 5px;
+  
+}
+
+.image-preview {
+  width: 100%;
+  max-width: 100px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  /* padding: 12px 16px;   */
+}
+
+
+
+    /* modal overlay */
+.section-form {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-5);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* hide modal */
+.hiddens {
+  display: none;
 }

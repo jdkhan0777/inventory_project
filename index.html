@@ -21,8 +21,8 @@
 
         <button id="add-btns" class="add-btn">+ Add Product</button>
       </header>
-      <!-- form -->
-      <section class="section-form hidden" id="form-card">
+
+      <section class="section-form hiddens" id="form-card">
         <form action="" id="product-form">
           <div class="form-header">
             <div class="form-header-left">
@@ -36,39 +36,51 @@
 
             <!-- <button id="close-btn" class="close-btns">X</button> -->
           </div>
-          <div class="input-fileds">
+
+          <div class="input-fields">
             <div class="input-name">
-              <h3>Shoe Name'</h3>
+              <h3>Shoe Name</h3>
               <input
                 type="text"
                 id="input-name"
-                placeholder="e.g., Running casual "
+                placeholder="e.g., Running casual"
               />
             </div>
+
             <div class="input-category-sku">
-              <h3>Category & SKU'</h3>
+              <h3>Category & SKU</h3>
               <input type="text" id="input-category" placeholder="Category" />
               <input
                 type="text"
                 id="input-sku"
-                placeholder="SKU (e.g., RUN-2024-001) "
+                placeholder="SKU (e.g., RUN-2024-001)"
               />
             </div>
+
             <div class="input-category-quantity-price">
-              <h3>Price/Quantity'</h3>
-              <input type="number" id="input-quantity" placeholder="quantity" />
-              <input type="number" id="input-price" placeholder="price" />
+              <h3>Price / Quantity</h3>
+              <input type="number" id="input-quantity" placeholder="Quantity" />
+              <input type="number" id="input-price" placeholder="Price" />
             </div>
-            <div ></div>
+
+            <div class="form-image">
+              <input type="file" id="image" accept="image/*" />
+              <div class="image-p">
+                <img
+                  id="img-preview"
+                  class="image-preview hidden"
+                  alt="preview"
+                />
+              </div>
+            </div>
           </div>
+
           <div class="form-button">
             <button type="button" id="cancel-button">Cancel</button>
             <button type="submit">Add Product</button>
           </div>
         </form>
       </section>
-
-      <!-- stats cards -->
 
       <section class="stats-section">
         <div class="stat-card purple">
@@ -108,61 +120,66 @@
         </div>
       </section>
 
-      <!-- Search Section -->
-
       <section class="section">
         <div class="search-section">
           <div class="search-wrapper">
-          <div class="search-bar">
-            <span class="search-icon">🔍</span>
-            <input
-              type="text"
-              placeholder="Search products by name, category, or SKU..."
-            />
+            <div class="search-bar">
+              <span class="search-icon">🔍</span>
+              <input
+                type="text"
+                placeholder="Search products by name, category, or SKU..."
+                id="search-input"
+              />
+            </div>
+
+            <button class="view-btn">☷</button>
+            <button class="view-btn">📊</button>
           </div>
 
-          <button class="view-btn">☷</button>
-          <button class="view-btn">📊</button>
+          <div class="search-footer">
+            <p>Showing <strong>6</strong> of <strong>6</strong> products</p>
+          </div>
         </div>
-
-        <div class="search-footer">
-          <p>Showing <strong>6</strong> of <strong>6</strong> products</p>
-        </div>
-        </div>
-        
       </section>
 
-      <!-- product card -->
+      <section class="product-section" id="product-section">
+        <div class="product-card">
+          <div class="buttons-edit-delete">
+            <button class="edit-btn" id="edit-btn">
+              <img src="/icons/edit.svg" alt="edit" />
+            </button>
+            <button class="delete-btn" id="delete-btn" data-id="">
+              <img src="/icons/trash.svg" alt="delete" />
+            </button>
+          </div>
 
-      <section class="product-section">
-  <div class="product-card">
-    <div class="product-image">
-      <img src="/items/nature.jpg" alt="Forest and trees" />
-    </div>
+          <div class="product-image">
+            <img src="/items/nature.jpg" alt="Forest and trees" />
+          </div>
 
-    <div class="product-content">
-      <h3 class="product-title">Forest Explorer</h3>
-      <p class="product-sku">SKU: FOR-2024-001</p>
-    </div>
+          <div class="product-content">
+            <h3 class="product-title">Forest Explorer</h3>
+            <p class="product-sku">SKU: FOR-2024-001</p>
+          </div>
 
-    <div class="product-stats">
-      <div class="product-stats-left">
-        <h3>Price</h3>
-        <p>£99.99</p>
-      </div>
+          <div class="product-stats">
+            <div class="product-stats-left">
+              <h3>Price</h3>
+              <p>£99.99</p>
+            </div>
 
-      <div class="product-stats-right">
-        <h3>Quantity</h3>
-        <p>25</p>
-      </div>
-    </div>
+            <div class="product-stats-right">
+              <h3>Quantity</h3>
+              <p>25</p>
+            </div>
+          </div>
 
-    <div class="product-total">
-      <h2>Total Value</h2>
-      <p>£2499.75</p>
-    </div>
-  </div>
-</section>
+          <div class="product-total">
+            <h2>Total Value</h2>
+            <p>£2499.75</p>
+          </div>
+        </div>
+      </section>
 
       <script src="script.js"></script>
     </main>
