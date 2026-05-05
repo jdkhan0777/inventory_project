@@ -4,7 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-const authRoutes = require("./routes/authRoutes");
+const authRoutes = require("./routes/authRoutes");  
 const auth = require("./middleware/auth");
 
 const app = express();
@@ -90,12 +90,12 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB connected");
-
-    app.listen(PORT, "0.0.0.0", () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
   })
   .catch((err) => {
     console.error("MongoDB connection error:", err);
     process.exit(1);
   });
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server is running on port ${PORT}`);
+});
