@@ -1,4 +1,14 @@
 // =========================
+// checking the token JWt
+// =========================
+const token = localStorage.getItem("token");
+
+if (!token) {
+  window.location.href = "login.html";
+}
+
+// rest of your code below
+// =========================
 // GET ELEMENTS
 // =========================
 const form = document.getElementById("product-form");
@@ -24,6 +34,9 @@ const modal = document.getElementById("form-card");
 const addBtn = document.getElementById("add-btns");
 const cancelBtn = document.getElementById("cancel-button");
 const searchinput = document.getElementById("search-input");
+const logoutBtn = document.getElementById("logout-btn");
+
+
 
 let products = [];
 let selectedimage = "";
@@ -35,10 +48,21 @@ let editingId = null;
 //   localStorage.setItem("products", JSON.stringify(products));
 // }
 
+
+// logout code 
+logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  window.location.href = "login.html";
+});
+
 // function get fetchProducts()
 async function loadProducts() {
   try {
-    const res = await fetch("http://localhost:5000/api/products");
+    const res = await fetch("https://inventory-project-1-7e0u.onrender.com/api/products", {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
     const data = await res.json();
 
     products = data; // update state
@@ -136,11 +160,13 @@ form.addEventListener("submit", async function (e) {
       image: selectedimage,
     };
 
-    await fetch(`http://localhost:5000/api/products/${editingId}`, {
+    await fetch(`https://inventory-project-1-7e0u.onrender.com/api/products/${editingId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
       },
+
       body: JSON.stringify(updatedProduct),
     });
 
@@ -157,17 +183,19 @@ form.addEventListener("submit", async function (e) {
     sku,
     quantity,
     price,
-    image: selectedimage || imagePreview.src, 
+    image: selectedimage || imagePreview.src,
   };
 
   // post product to backend
-  await fetch("http://localhost:5000/api/products", {
+  await fetch("https://inventory-project-1-7e0u.onrender.com/api/products", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("token"),
     },
     body: JSON.stringify(product),
-  }); 
+  });
+
 
   loadProducts();
   closeModal();
@@ -268,8 +296,11 @@ document.addEventListener("click", async (e) => {
 
   const id = deleteBtn.dataset.id;
 
-  await fetch(`http://localhost:5000/api/products/${id}`, {
+  await fetch(`https://inventory-project-1-7e0u.onrender.com/api/products/${id}`, {
     method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
   });
 
   loadProducts();
