@@ -1,38 +1,29 @@
 require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+
 const authRoutes = require("./routes/authRoutes");
 const auth = require("./middleware/auth");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// middleware
 app.use(cors());
-app.use(express.json({limit: "10mb"}));
+app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
+// test route
+app.get("/", (req, res) => {
+  res.send("Backend is running");
+});
+
+// auth routes
 app.use("/api/auth", authRoutes);
 
-// connect to MongoDB
-mongoose
-  .connect(
-    "mongodb+srv://junaidkhanhud_db_user:J84AjLudDe82cYR7@inventory-app.e4rkeeg.mongodb.net/inventory_management?appName=inventory-app",
-  )
-  .then(() => {
-    console.log("MongoDB connected");
-
-    // server setup and server start.
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("MongoDB connection error =========:", err);
-    // process.exit(1); // Exit the application if DB connection fails
-  });
-
-// product schema and model
+// product model
 const Product = mongoose.model("Product", {
   name: String,
   category: String,
@@ -43,39 +34,68 @@ const Product = mongoose.model("Product", {
 });
 
 // get all products
-
 app.get("/api/products", auth, async (req, res) => {
-  console.log("requst.ip: ", req.ip);
-  const products = await Product.find();
-  res.status(200).json(products);
+  try {
+    const products = await Product.find();
+    res.status(200).json(products);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to get products" });
+  }
 });
 
-//  post a new product
+// add product
 app.post("/api/products", auth, async (req, res) => {
-  const product = await Product.create(req.body);
-  res.status(201).json(product);
+  try {
+    const product = await Product.create(req.body);
+    res.status(201).json(product);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to add product" });
+  }
 });
 
-// edit a product
+// update product
 app.put("/api/products/:id", auth, async (req, res) => {
-  const updated = await Product.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  });
+  try {
+    const updated = await Product.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
 
-  if (!updated) {
-    return res.status(404).json({ message: "Product not found" });
+    if (!updated) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    res.status(200).json(updated);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to update product" });
   }
-
-  res.status(200).json(updated);
 });
 
-// delete a product
+// delete product
 app.delete("/api/products/:id", auth, async (req, res) => {
-  const deleted = await Product.findByIdAndDelete(req.params.id);
+  try {
+    const deleted = await Product.findByIdAndDelete(req.params.id);
 
-  if (!deleted) {
-    return res.status(404).json({ message: "Product not found" });
+    if (!deleted) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    res.status(200).json({ message: "Deleted" });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to delete product" });
   }
-
-  res.status(200).json({ message: "Deleted" });
 });
+
+// connect DB then start server
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("MongoDB connected");
+
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+    process.exit(1);
+  });
