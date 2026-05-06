@@ -617,7 +617,7 @@ img {
   justify-content: center;
   align-items: center;
   padding: var(--space-5);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.75);
 }
 
 /* hide modal */
