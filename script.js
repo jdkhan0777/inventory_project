@@ -246,16 +246,16 @@ function renderProducts() {
     productCard.innerHTML = `
       <div class="buttons-edit-delete">
         <button class="edit-btn" data-id="${product._id}">
-          <img src="/icons/edit.svg" alt="edit" />
+          <img src="icons/edit.svg" alt="edit" />
         </button>
 
         <button class="delete-btn" data-id="${product._id}">
-          <img src="/icons/trash.svg" alt="delete" />
+          <img src="icons/trash.svg" alt="delete" />
         </button>
       </div>
 
       <div class="product-image">
-        <img src="${product.image || "/items/nature.jpg"}" alt="${product.name}" />
+        <img src="${product.image || "items/nature.jpg"}" alt="${product.name}" />
       </div>
 
       <div class="product-content">
